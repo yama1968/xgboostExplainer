@@ -61,7 +61,7 @@ explainPredictions = function(xgb.model, explainer ,data){
   num_trees = ncol(nodes)
 
   cat('\n\nExtracting the breakdown of each prediction...\n')
-  pb <- txtProgressBar(style=3)
+#  pb <- txtProgressBar(style=3)
   for (x in 1:num_trees){
     nodes_for_tree = nodes[,x]
     tree_breakdown = explainer[tree==x-1]
@@ -69,7 +69,7 @@ explainPredictions = function(xgb.model, explainer ,data){
     preds_breakdown_for_tree = tree_breakdown[match(nodes_for_tree, tree_breakdown$leaf),]
     preds_breakdown = preds_breakdown + preds_breakdown_for_tree[,colnames,with=FALSE]
 
-    setTxtProgressBar(pb, x / num_trees)
+#    setTxtProgressBar(pb, x / num_trees)
   }
 
   cat('\n\nDONE!\n')
